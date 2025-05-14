@@ -3,8 +3,8 @@
 namespace HumanNameParser\Exception;
 
 /**
-* Exception for NameParsing
-*/
+ * Exception for NameParsing
+ */
 class NameParsingException extends \Exception
 {
 }

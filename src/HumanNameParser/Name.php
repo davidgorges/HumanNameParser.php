@@ -2,53 +2,53 @@
 
 namespace HumanNameParser;
 
-class Name {
-    
+class Name
+{
     /**
-     * @var string
+     * @var string|null
      */
-    private $leadingInitial;
+    private $leadingInitial = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $firstName;
+    private $firstName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nicknames;
+    private $nicknames = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $middleName;
+    private $middleName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $lastName;
+    private $lastName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $academicTitle;
+    private $academicTitle = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $suffix;
+    private $suffix = null;
 
     /**
      * Gets the value of firstName.
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
-    
+
     /**
      * Sets the value of firstName.
      *
@@ -56,7 +56,7 @@ class Name {
      *
      * @return self
      */
-    public function setFirstName($firstName)
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -68,11 +68,11 @@ class Name {
      *
      * @return string
      */
-    public function getNicknames()
+    public function getNicknames(): ?string
     {
         return $this->nicknames;
     }
-    
+
     /**
      * Sets the value of nicknames.
      *
@@ -80,7 +80,7 @@ class Name {
      *
      * @return self
      */
-    public function setNicknames($nicknames)
+    public function setNicknames(?string $nicknames): self
     {
         $this->nicknames = $nicknames;
 
@@ -92,11 +92,11 @@ class Name {
      *
      * @return string
      */
-    public function getMiddleName()
+    public function getMiddleName(): ?string
     {
         return $this->middleName;
     }
-    
+
     /**
      * Sets the value of middleName.
      *
@@ -104,7 +104,7 @@ class Name {
      *
      * @return self
      */
-    public function setMiddleName($middleName)
+    public function setMiddleName(?string $middleName): self
     {
         $this->middleName = $middleName;
 
@@ -116,11 +116,11 @@ class Name {
      *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
-    
+
     /**
      * Sets the value of lastName.
      *
@@ -128,7 +128,7 @@ class Name {
      *
      * @return self
      */
-    public function setLastName($lastName)
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -140,11 +140,11 @@ class Name {
      *
      * @return string
      */
-    public function getSuffix()
+    public function getSuffix(): ?string
     {
         return $this->suffix;
     }
-    
+
     /**
      * Sets the value of suffix.
      *
@@ -152,7 +152,7 @@ class Name {
      *
      * @return self
      */
-    public function setSuffix($suffix)
+    public function setSuffix(?string $suffix): self
     {
         $this->suffix = $suffix;
 
@@ -164,11 +164,11 @@ class Name {
      *
      * @return string
      */
-    public function getLeadingInitial()
+    public function getLeadingInitial(): ?string
     {
         return $this->leadingInitial;
     }
-    
+
     /**
      * Sets the value of leadingInitial.
      *
@@ -176,7 +176,7 @@ class Name {
      *
      * @return self
      */
-    public function setLeadingInitial($leadingInitial)
+    public function setLeadingInitial(?string $leadingInitial): self
     {
         $this->leadingInitial = $leadingInitial;
 
@@ -188,11 +188,11 @@ class Name {
      *
      * @return string
      */
-    public function getAcademicTitle()
+    public function getAcademicTitle(): ?string
     {
         return $this->academicTitle;
     }
-    
+
     /**
      * Sets the value of academicTitle.
      *
@@ -200,7 +200,7 @@ class Name {
      *
      * @return self
      */
-    public function setAcademicTitle($academicTitle)
+    public function setAcademicTitle(?string $academicTitle): self
     {
         $this->academicTitle = $academicTitle;
 

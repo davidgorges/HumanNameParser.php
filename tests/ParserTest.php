@@ -7,18 +7,17 @@ use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
 {
-
     /**
      * @var Parser
      */
     private $parser;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->parser = new Parser();
     }
 
-    public function testSuffix()
+    public function testSuffix(): void
     {
         $name = 'Björn O\'Malley, Jr.';
         $nameObject = $this->parser->parse($name);
@@ -27,7 +26,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Jr.', $nameObject->getSuffix());
     }
 
-    public function testSimple()
+    public function testSimple(): void
     {
         $name = 'Hans Meiser';
         $nameObject = $this->parser->parse($name);
@@ -35,7 +34,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Meiser', $nameObject->getLastName());
     }
 
-    public function testReverse()
+    public function testReverse(): void
     {
         $name = 'Meiser, Hans';
         $nameObject = $this->parser->parse($name);
@@ -43,7 +42,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Meiser', $nameObject->getLastName());
     }
 
-    public function testReverseWithSlash()
+    public function testReverseWithSlash(): void
     {
         $name = 'Smith / Joe';
         $nameObject = $this->parser->parse($name);
@@ -51,7 +50,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Smith', $nameObject->getLastName());
     }
 
-    public function testReverseWithAcademicTitle()
+    public function testReverseWithAcademicTitle(): void
     {
         $name = 'Dr. Meiser, Hans';
         $nameObject = $this->parser->parse($name);
@@ -60,7 +59,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Hans', $nameObject->getFirstName());
     }
 
-    public function testithAcademicTitle()
+    public function testithAcademicTitle(): void
     {
         $name = 'Dr. Hans Meiser';
         $nameObject = $this->parser->parse($name);
@@ -69,7 +68,7 @@ class ParserTest extends TestCase
         $this->assertEquals('Hans', $nameObject->getFirstName());
     }
 
-    public function testLastNameWithPrefix()
+    public function testLastNameWithPrefix(): void
     {
         $name = 'Björn van Olst';
         $nameObject = $this->parser->parse($name);
@@ -77,54 +76,54 @@ class ParserTest extends TestCase
         $this->assertEquals('Björn', $nameObject->getFirstName());
     }
 
-    public function testNoFirstNameDefaultException()
+    public function testNoFirstNameDefaultException(): void
     {
         $name = 'Mr. Hyde';
         $this->expectException('HumanNameParser\Exception\FirstNameNotFoundException');
         $this->parser->parse($name);
     }
 
-    public function testNoLastNameDefaultException()
+    public function testNoLastNameDefaultException(): void
     {
         $name = 'Edward';
         $this->expectException('HumanNameParser\Exception\LastNameNotFoundException');
         $this->parser->parse($name);
     }
 
-    public function testFirstNameNotMandatory()
+    public function testFirstNameNotMandatory(): void
     {
-        $this->parser = new Parser(array('mandatory_first_name' => false));
+        $this->parser = new Parser(['mandatory_first_name' => false]);
         $name = 'Dr. Jekyll';
         $nameObject = $this->parser->parse($name);
         $this->assertEquals('Dr.', $nameObject->getAcademicTitle());
         $this->assertEquals('Jekyll', $nameObject->getLastName());
     }
 
-    public function testLastNameNotMandatory()
+    public function testLastNameNotMandatory(): void
     {
-        $this->parser = new Parser(array('mandatory_last_name' => false));
+        $this->parser = new Parser(['mandatory_last_name' => false]);
         $name = 'Henry';
         $nameObject = $this->parser->parse($name);
         $this->assertEquals('Henry', $nameObject->getFirstName());
     }
 
-    public function testFirstNameMandatory()
+    public function testFirstNameMandatory(): void
     {
-        $this->parser = new Parser(array('mandatory_first_name' => true));
+        $this->parser = new Parser(['mandatory_first_name' => true]);
         $name = 'Mr. Hyde';
         $this->expectException('HumanNameParser\Exception\FirstNameNotFoundException');
         $this->parser->parse($name);
     }
 
-    public function testLastNameMandatory()
+    public function testLastNameMandatory(): void
     {
-        $this->parser = new Parser(array('mandatory_last_name' => true));
+        $this->parser = new Parser(['mandatory_last_name' => true]);
         $name = 'Edward';
         $this->expectException('HumanNameParser\Exception\LastNameNotFoundException');
         $this->parser->parse($name);
     }
 
-    public function testNameList()
+    public function testNameList(): void
     {
         $names = $this->getNames();
         foreach ($names as $nameStr) {
@@ -137,13 +136,15 @@ class ParserTest extends TestCase
             $this->assertEquals($nameparts[4], $nameObject->getMiddleName(), sprintf("failed to ensure correct middle name (%s) in name %s", $nameparts[4], $name));
             $this->assertEquals($nameparts[5], $nameObject->getLastName(), sprintf("failed to ensure correct last name (%s) in name %s", $nameparts[5], $name));
             $this->assertEquals($nameparts[6], $nameObject->getSuffix(), sprintf("failed to ensure correct suffix (%s) in name %s", $nameparts[6], $name));
-
         }
     }
 
-    private function getNames()
+    /**
+     * @return array<string>
+     */
+    private function getNames(): array
     {
-        return array(
+        return [
             'Björn O\'Malley;;Björn;;;O\'Malley;',
             'Bin Lin;;Bin;;;Lin;',
             'Linda Jones;;Linda;;;Jones;',
@@ -179,6 +180,6 @@ class ParserTest extends TestCase
             'Smith / Joe;;Joe;;;Smith;',
             'Smith/ Ms Jane Middle;;Jane;;Middle;Smith;',
             'Smith Jr / Dr Joe;;Joe;;;Smith;Jr',
-        );
+        ];
     }
 }

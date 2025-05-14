@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
     colors="true"
-    bootstrap="tests/bootstrap.php">
+    bootstrap="tests/bootstrap.php"
+    executionOrder="random"
+    cacheDirectory=".phpunit.cache">
     <testsuites>
         <testsuite name="Human Name Parser tests">
-            <directory>Tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <ini name="display_errors" value="On" />
+        <ini name="error_reporting" value="-1" />
+    </php>
 </phpunit>
