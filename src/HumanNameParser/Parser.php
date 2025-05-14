@@ -16,12 +16,14 @@ class Parser
     // The regex use is a bit tricky.  *Everything* matched by the regex will be replaced,
     //    but you can select a particular parenthesized submatch to be returned.
     //    Also, note that each regex requires that the preceding ones have been run, and matches chopped out.
-    private const REGEX_NICKNAMES = "/ ('|\"|\(\"*'*)(.+?)('|\"|\"*'*\)) /i"; // names that starts or end w/ an apostrophe break this
+    // Names that starts or end with an apostrophe break this
+    private const REGEX_NICKNAMES = "/ ('|\"|\(\"*'*)(.+?)('|\"|\"*'*\)) /i";
     private const REGEX_TITLES = "/^(%s)\.*/i";
     // Using a different approach instead of this regex
     // private const REGEX_SUFFIX = "/(\*,) *(%s)$/i";
     private const REGEX_LAST_NAME = "/(?!^)\b([^ ]+ y |%s)*[^ ]+$/i";
-    private const REGEX_LEADING_INITIAL = "/^(.\.*)(?= \p{L}{2})/i"; // note the lookahead, which isn't returned or replaced
+    // Note the lookahead, which isn't returned or replaced
+    private const REGEX_LEADING_INITIAL = "/^(.\.*)(?= \p{L}{2})/i";
     private const REGEX_FIRST_NAME = "/^[^ ]+/i"; //
 
     /**

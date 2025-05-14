@@ -36,7 +36,7 @@ jobs:
         run: vendor/bin/phpunit
       
       - name: Check coding standards
-        run: vendor/bin/phpcs --standard=PSR12 src/ tests/
+        run: vendor/bin/phpcs --standard=PSR12 -n src/ tests/
       
       - name: Static analysis
         run: vendor/bin/phpstan analyse

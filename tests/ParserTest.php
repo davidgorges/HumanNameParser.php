@@ -130,12 +130,36 @@ class ParserTest extends TestCase
             $nameparts = explode(';', $nameStr);
             $name = $nameparts[0];
             $nameObject = $this->parser->parse($name);
-            $this->assertEquals($nameparts[1], $nameObject->getLeadingInitial(), sprintf("failed to ensure correct leading initial (%s) in name %s", $nameparts[1], $name));
-            $this->assertEquals($nameparts[2], $nameObject->getFirstName(), sprintf("failed to ensure correct first name (%s) in name %s", $nameparts[2], $name));
-            $this->assertEquals($nameparts[3], $nameObject->getNickNames(), sprintf("failed to ensure correct nickname (%s) in name %s", $nameparts[3], $name));
-            $this->assertEquals($nameparts[4], $nameObject->getMiddleName(), sprintf("failed to ensure correct middle name (%s) in name %s", $nameparts[4], $name));
-            $this->assertEquals($nameparts[5], $nameObject->getLastName(), sprintf("failed to ensure correct last name (%s) in name %s", $nameparts[5], $name));
-            $this->assertEquals($nameparts[6], $nameObject->getSuffix(), sprintf("failed to ensure correct suffix (%s) in name %s", $nameparts[6], $name));
+            $this->assertEquals(
+                $nameparts[1],
+                $nameObject->getLeadingInitial(),
+                sprintf("failed to ensure correct leading initial (%s) in name %s", $nameparts[1], $name)
+            );
+            $this->assertEquals(
+                $nameparts[2],
+                $nameObject->getFirstName(),
+                sprintf("failed to ensure correct first name (%s) in name %s", $nameparts[2], $name)
+            );
+            $this->assertEquals(
+                $nameparts[3],
+                $nameObject->getNickNames(),
+                sprintf("failed to ensure correct nickname (%s) in name %s", $nameparts[3], $name)
+            );
+            $this->assertEquals(
+                $nameparts[4],
+                $nameObject->getMiddleName(),
+                sprintf("failed to ensure correct middle name (%s) in name %s", $nameparts[4], $name)
+            );
+            $this->assertEquals(
+                $nameparts[5],
+                $nameObject->getLastName(),
+                sprintf("failed to ensure correct last name (%s) in name %s", $nameparts[5], $name)
+            );
+            $this->assertEquals(
+                $nameparts[6],
+                $nameObject->getSuffix(),
+                sprintf("failed to ensure correct suffix (%s) in name %s", $nameparts[6], $name)
+            );
         }
     }
 
