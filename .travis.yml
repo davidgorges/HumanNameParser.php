@@ -1,15 +1,16 @@
 language: php
 php:
-  - "7.3"
-  - "7.2"
-  - "7.1"
+  - "8.1"
+  - "8.2"
+  - "8.3"
+  - "8.4"
 
 install: composer install
 
 script:
   - vendor/bin/phpunit
-  - vendor/bin/phpstan.phar analyse -l max -c phpstan.neon src --no-interaction --no-progress
-
+  - vendor/bin/phpstan analyse
+  - vendor/bin/phpcs --standard=PSR12 src/ tests/
 
 notifications:
   recipients:
